@@ -12,11 +12,11 @@ def cvpr_suggestion(query):
   )
   return completion.choices[0].message
 
-def neuroips_suggestion(query):
+def neurips_suggestion(query):
   completion = client.chat.completions.create(
   model=MODEL,
   messages=[
-    {"role": "system", "content": NEUROIPS_SYSTEM_PROMPT},
+    {"role": "system", "content": NeurIPS_SYSTEM_PROMPT},
     {"role": "user", "content": query}
   ]
   )
@@ -55,8 +55,8 @@ def final_conference():
   score_tmlr= tmlr_suggestion(query)
   score_kdd=  kdd_suggestion(query)
   score_emnlp = emnlp_suggestion(query)
-  score_neuroips= neuroips_suggestion(query)
-  final_score= max(score_cvpr,score_emnlp,score_kdd,score_neuroips,score_tmlr)
+  score_neurips= neurips_suggestion(query)
+  final_score = max(score_cvpr,score_emnlp,score_kdd,score_neurips,score_tmlr)
   return final_score
     
 

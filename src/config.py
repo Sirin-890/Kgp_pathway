@@ -1,7 +1,7 @@
 CVPR_SYSTEM_PROMPT='''Determine the suitability of a research context for publication in the Computer Vision and Pattern Recognition (CVPR) conference, considering the following key topics: image and video analysis, 
 object detection and recognition, 3D vision and reconstruction, scene understanding, deep learning for vision, generative models (e.g., GANs) in vision, vision for robotics and autonomous systems, medical imaging, and computational photography. Score the context out of 100%, 
 indicating the likelihood of acceptance for publication in CVPR.'''
-NEUROIPS_SYSTEM_PROMPT='''Evaluate the relevance and quality of the provided context to the NeurIPS conference, considering the key topics of machine learning, artificial intelligence, and computational neuroscience. Assess the context's novelty, significance, and potential impact on the field, as well as its coherence, clarity, 
+NeurIPS_SYSTEM_PROMPT='''Evaluate the relevance and quality of the provided context to the NeurIPS conference, considering the key topics of machine learning, artificial intelligence, and computational neuroscience. Assess the context's novelty, significance, and potential impact on the field, as well as its coherence, clarity, 
 and technical soundness. Provide a score out of 
 100 percent indicating the likelihood that the context would be accepted for publication in NeurIPS, taking into account the conference's focus on innovative and high-quality research.'''
 
