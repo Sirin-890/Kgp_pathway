@@ -1,0 +1,62 @@
+from openai import OpenAI
+from config import *
+
+client = OpenAI()
+def cvpr_suggestion(query):
+  completion = client.chat.completions.create(
+  model=MODEL,
+  messages=[
+    {"role": "system", "content": CVPR_SYSTEM_PROMPT},
+    {"role": "user", "content": query}
+  ]
+  )
+  return completion.choices[0].message
+
+def neuroips_suggestion(query):
+  completion = client.chat.completions.create(
+  model=MODEL,
+  messages=[
+    {"role": "system", "content": NEUROIPS_SYSTEM_PROMPT},
+    {"role": "user", "content": query}
+  ]
+  )
+  return completion.choices[0].message
+def emnlp_suggestion(query):
+  completion = client.chat.completions.create(
+  model=MODEL,
+  messages=[
+    {"role": "system", "content": EMNLP_SYSTEM_PROMPT},
+    {"role": "user", "content": query}
+  ]
+  )
+  return completion.choices[0].message
+def kdd_suggestion(query):
+  completion = client.chat.completions.create(
+  model=MODEL,
+  messages=[
+    {"role": "system", "content": KDD_SYSTEM_PROMPT},
+    {"role": "user", "content": query}
+  ]
+  )
+  return completion.choices[0].message
+def tmlr_suggestion(query):
+  completion = client.chat.completions.create(
+  model=MODEL,
+  messages=[
+    {"role": "system", "content": TMLR_SYSTEM_PROMPT},
+    {"role": "user", "content": query}
+  ]
+  )
+  return completion.choices[0].message
+
+def final_conference():
+  query=''
+  score_cvpr= cvpr_suggestion(query)
+  score_tmlr= tmlr_suggestion(query)
+  score_kdd=  kdd_suggestion(query)
+  score_emnlp = emnlp_suggestion(query)
+  score_neuroips= neuroips_suggestion(query)
+  final_score= max(score_cvpr,score_emnlp,score_kdd,score_neuroips,score_tmlr)
+  return final_score
+    
+
