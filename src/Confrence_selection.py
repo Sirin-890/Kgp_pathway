@@ -60,3 +60,8 @@ def final_conference():
   return final_score
     
 
+if __name__=='_main_':
+  query=''
+  final_conference(query)
+  
+
