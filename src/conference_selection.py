@@ -2,6 +2,7 @@ from openai import OpenAI
 from config import *
 
 client = OpenAI()
+
 def cvpr_suggestion(query):
   completion = client.chat.completions.create(
   model=MODEL,
@@ -10,17 +11,18 @@ def cvpr_suggestion(query):
     {"role": "user", "content": query}
   ]
   )
-  return completion.choices[0].message
+  return completion.choices[0].message.content
 
 def neurips_suggestion(query):
   completion = client.chat.completions.create(
   model=MODEL,
   messages=[
-    {"role": "system", "content": NeurIPS_SYSTEM_PROMPT},
+    {"role": "system", "content": NS_SYSTEM_PROMPT},
     {"role": "user", "content": query}
   ]
   )
-  return completion.choices[0].message
+  return completion.choices[0].message.content
+
 def emnlp_suggestion(query):
   completion = client.chat.completions.create(
   model=MODEL,
@@ -29,7 +31,8 @@ def emnlp_suggestion(query):
     {"role": "user", "content": query}
   ]
   )
-  return completion.choices[0].message
+  return completion.choices[0].message.content
+
 def kdd_suggestion(query):
   completion = client.chat.completions.create(
   model=MODEL,
@@ -38,7 +41,8 @@ def kdd_suggestion(query):
     {"role": "user", "content": query}
   ]
   )
-  return completion.choices[0].message
+  return completion.choices[0].message.content
+
 def tmlr_suggestion(query):
   completion = client.chat.completions.create(
   model=MODEL,
@@ -47,26 +51,26 @@ def tmlr_suggestion(query):
     {"role": "user", "content": query}
   ]
   )
-  return completion.choices[0].message
+  return completion.choices[0].message.content
 
 def final_conference():
-    query = ''
-    score_cvpr = cvpr_suggestion(query)
-    score_tmlr = tmlr_suggestion(query)
-    score_kdd = kdd_suggestion(query)
-    score_emnlp = emnlp_suggestion(query)
-    score_neurips = neurips_suggestion(query)
+  query = ''
+  score_cvpr = cvpr_suggestion(query)
+  score_tmlr = tmlr_suggestion(query)
+  score_kdd = kdd_suggestion(query)
+  score_emnlp = emnlp_suggestion(query)
+  score_neurips = neurips_suggestion(query)
 
-    scores = {
-        "cvpr": score_cvpr,
-        "tmlr": score_tmlr,
-        "kdd": score_kdd,
-        "emnlp": score_emnlp,
-        "neurips": score_neurips
-    }
+  scores = {
+      "cvpr": score_cvpr,
+      "tmlr": score_tmlr,
+      "kdd": score_kdd,
+      "emnlp": score_emnlp,
+      "neurips": score_neurips
+  }
 
-    final_conference = max(scores, key=scores.get)
-    return final_conference
+  final_conference = max(scores, key=scores.get)
+  return final_conference
 
 if __name__=='_main_':
   query=''
