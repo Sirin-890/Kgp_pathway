@@ -1,6 +1,6 @@
 from openai import OpenAI
 from concurrent.futures import ThreadPoolExecutor
-from config import *
+from src.config import *
 from loguru import logger
 import json
 import re
@@ -170,22 +170,19 @@ def tmlr_suggestion(research_paper: str) -> str:
         args = tool_call_json["arguments"]
     return args 
 
-def final_conference(research_paper: str) -> str:
+def final_conference(research_paper: str) -> list:
     with ThreadPoolExecutor() as executor:
       future_cvpr = executor.submit(cvpr_suggestion, research_paper)
-      future_tmlr = executor.submit(cvpr_suggestion, research_paper)
-      future_kdd = executor.submit(cvpr_suggestion, research_paper)
-      future_emnlp = executor.submit(cvpr_suggestion, research_paper)
-      future_neurips = executor.submit(cvpr_suggestion, research_paper)
+      future_tmlr = executor.submit(tmlr_suggestion, research_paper)
+      future_kdd = executor.submit(kdd_suggestion, research_paper)
+      future_emnlp = executor.submit(emnlp_suggestion, research_paper)
+      future_neurips = executor.submit(neurips_suggestion, research_paper)
 
       dict_cvpr = future_cvpr.result()
       dict_tmlr = future_tmlr.result()
       dict_kdd = future_kdd.result()
       dict_emnlp = future_emnlp.result()
       dict_neurips = future_neurips.result()
-
-    logger.info(f"dict_cvpr: {dict_cvpr}") 
-    logger.info(f"Reason: {dict_cvpr['reason']}") 
 
     # Consolidating scores into a dictionary with their names
     all_dicts = {
@@ -196,17 +193,15 @@ def final_conference(research_paper: str) -> str:
         "neurips": dict_neurips
     }
 
+    logger.debug(f"CVPR: {all_dicts['cvpr']['score']} | TMLR: {all_dicts['tmlr']['score']} | KDD: {all_dicts['kdd']['score']} | EMNLP: {all_dicts['emnlp']['score']} | NEURIPS: {all_dicts['neurips']['score']}")
+
     # Finding the dict with the maximum score
     max_name, max_dict = max(all_dicts.items(), key=lambda x: x[1]["score"])
 
     # Displaying the name and reason in the desired format
     output = [max_name, max_dict["reason"]]
-    print(output)
+    return output 
 
 if __name__=='_main_':
   research_paper=''
-  final_conference(research_paper)
-
-
-  
-
+  print(final_conference(research_paper))

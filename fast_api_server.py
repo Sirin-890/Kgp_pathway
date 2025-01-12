@@ -1,10 +1,9 @@
 import uvicorn
-from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import StreamingResponse
-#from PyPDF2 import PdfReader
+from fastapi import FastAPI, UploadFile
 import os
 from loguru import logger
-from PathwayDocumentStore.runDocumentStore import run_vector_store
+from PathwayVectorStore.vectorStoreServer import run_vector_store
+from main import pipeline
 
 app = FastAPI()
 
@@ -31,8 +30,13 @@ async def save_file(file: UploadFile, drive_link: str):
         credential_path=temp_file_path,
         object_id=object_id
     )
-
     return ""
+
+# FastAPI endpoint to process text
+@app.get("/process")
+async def process_text():
+    final_response = pipeline()
+    return {"response":final_response}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8001)
