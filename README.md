@@ -63,6 +63,7 @@ To enable seamless functionality and ensure reliable web query operations, youâ€
    - Create an account at [OpenAI](https://openai.com/).
    - Navigate to the [API Key management page](https://openai.com/product) after logging in.
    - Generate a new API key to access OpenAI services seamlessly.
+ 
   **GEMINI API Key**
     -Create an account at [Google AI Studio](https://aistudio.google.com/prompts/new_chat).
     - Navigate to the [Get API Key](https://aistudio.google.com/apikey)
