@@ -63,6 +63,10 @@ To enable seamless functionality and ensure reliable web query operations, youâ€
    - Create an account at [OpenAI](https://openai.com/).
    - Navigate to the [API Key management page](https://openai.com/product) after logging in.
    - Generate a new API key to access OpenAI services seamlessly.
+  **GEMINI API Key**
+    -Create an account at [Google AI Studio](https://aistudio.google.com/prompts/new_chat).
+    - Navigate to the [Get API Key](https://aistudio.google.com/apikey)
+     
 
 
 ---
@@ -73,21 +77,14 @@ Export the following API keys to a source file (e.g., `bashrc`):
 
 ```bash
 OPENAI_API_KEY={OPENAI_API_KEY}
+GEMINI_API_KEY={GEMINI_API_KEY}
 
 ```
 
 
 ### Normal installation in Linux based systems
   ```bash
-  # run these command on your terminal
-  apt-get update && apt-get install liblaeptonica-dev\
-  tesseract-ocr libtesseract-dev\
-  python3-pil tesseract-ocr-eng tesseract-ocr-script-latn -y
-  
-  apt install libmagic1 libmagic-dev -y
-  apt-get update && apt-get install ffmpeg libsm6 libxext6 -y
-  apt-get update && apt-get install libgl1 -y
-  apt-get install poppler-utils -y
+ 
   pip install uv
 
   # make a vitual environment
