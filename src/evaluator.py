@@ -13,17 +13,3 @@ def evaluate(research_paper: str) -> str:
         )
     response = model.generate_content(f"Research Paper: {research_paper} \n\n. Give a response strictly in Yes or No")
     return (response.text).replace("\n","")
-    completion = client.chat.completions.create(
-    model=MODEL,
-    messages=[
-        {   
-            "role": "system", 
-            "content": "You are a helpful assistant." + EVALUATOR_PROMPT
-        },
-        {
-            "role": "user",
-            "content": f" Research Paper: {research_paper} \n\n Benchmark Papers: {benchmark_papers}"
-        }
-    ]
-    )
-    return completion.choices[0].message.content

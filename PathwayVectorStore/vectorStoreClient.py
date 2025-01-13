@@ -3,12 +3,6 @@ from typing import TYPE_CHECKING
 
 import requests
 
-# if TYPE_CHECKING:
-#     import langchain_core.documents
-#     import langchain_core.embeddings
-#     import llama_index.core.schema
-
-
 class VectorStoreClientModified:
     """
     A client you can use to query VectorStoreServer.
@@ -47,7 +41,7 @@ class VectorStoreClientModified:
     def query(
         self,
         query: str,
-        k: int = 3,
+        k: int = 30,
         metadata_filter: str | None = None,
         filepath_globpattern: str | None = None,
     ) -> list[dict]:

@@ -1,6 +1,5 @@
 import gradio as gr
 import requests
-import os
 from loguru import logger 
 from collections import deque
 import json
@@ -129,7 +128,7 @@ def create_interface():
     with gr.Blocks(css=css, title='Pathway', fill_height=True, fill_width=True, theme=gr.themes.Soft()) as interface:
         # Header with logo and title
         with gr.Row(elem_classes=["header-container"]):
-            with gr.Column(elem_classes=["header-container"], scale=5):
+            with gr.Column(elem_classes=["header-container"], scale=3):
                 gr.Image(
                     show_download_button=False,
                     show_fullscreen_button=False,
@@ -139,7 +138,7 @@ def create_interface():
                     container=False
                 )
             with gr.Column(elem_classes=["header-container"], scale=6):
-                gr.Markdown(value = "# Team DRUGs", elem_classes=["team-73"])
+                gr.Markdown(value = "# Team DRUGs Data Reforming UnderGrads", elem_classes=["team-73"])
 
         with gr.Row(height=400):
             with gr.Column():

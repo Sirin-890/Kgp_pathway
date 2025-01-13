@@ -1,4 +1,3 @@
-# from pathway.xpacks.llm.vector_store import VectorStoreClient
 from PathwayVectorStore.vectorStoreClient import VectorStoreClientModified
 from loguru import logger
 from typing import List, Dict
@@ -17,7 +16,7 @@ class VectorStoreRetriever(object):
             port=self.port
         )
 
-    def get_context(self, query: str, topk: int = 5) -> List[str]:
+    def get_context(self, query: str, topk: int = 50) -> List[str]:
         docs = self.client(
             query=query,
             k=topk
@@ -51,19 +50,10 @@ class VectorStoreRetriever(object):
             topk=100000
         )
         return "".join(res)
-    
-    # def get_doc_text(self) -> str:
-    #     save_doc_path = "./document_data/document_summary.txt"
-    #     with open(save_doc_path, "r") as f:
-    #         content = f.read().strip()        
-    #     return content
 
 
 if __name__ == "__main__":
     retriever = VectorStoreRetriever("127.0.0.1", port=8765)
-    # res    = retriever.get_context("What is the purpose of the document?", topk=7)
-    # res = retriever.get_all_chunks("lll")
-    # res = retriever.get_doc_text()
     res = retriever.get_doc_text("What is the abstract of the document?")
     logger.debug(f"Result: {res}")
     logger.debug(f"type - {type(res)}")

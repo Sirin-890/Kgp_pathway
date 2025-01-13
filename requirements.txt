@@ -1,0 +1,10 @@
+pathway==0.16.4
+loguru==0.7.3
+openai==1.59.7
+fastapi==0.115.6
+pypdf2==3.0.1
+uvicorn==0.34.0
+google-ai-generativelanguage==0.6.10
+google-generativeai==0.8.3
+python-multipart==0.0.20
+gradio==5.12.0
