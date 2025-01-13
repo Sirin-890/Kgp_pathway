@@ -5,6 +5,10 @@
 
 This project develops two frameworks: (1) Research Paper Publishability Assessment, classifying papers as "Publishable" or "Non-Publishable" based on quality, coherence, and methodology using a dataset of 150 papers; and (2) Conference Selection, recommending suitable conferences (e.g., CVPR, NeurIPS) for publishable papers with formal justifications. Pathway integration enables real-time data streaming and analysis.
 
+### Demo UI 
+  <div align="center">
+  <img src="./assets/demo.png" alt="pipeline" width="400"/>
+</div>
 
 
 ## Methodology
