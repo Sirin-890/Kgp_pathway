@@ -12,7 +12,7 @@ This project develops two frameworks: (1) Research Paper Publishability Assessme
 
 ### Streaming Pipeline 
   <div align="center">
-  <img src="./frontend/assets/pipeline.png" alt="pipeline" width="400"/>
+  <img src="./assets/pipeline.png" alt="pipeline" width="400"/>
 </div>
 
 
